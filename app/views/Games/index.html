@@ -1,0 +1,153 @@
+#{extends 'main.html' /}
+#{set title:'LDCritcs' /}
+
+<form action="@{Games.home}">
+
+	<section id="carrossel">
+		<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img src="/public/images/senua-home.jpg" class="d-block w-100" alt="Hellblade: Senua's Sacrifice">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Hellblade: Senua's Sacrifice</h5>
+						<p>Uma viagem brutal de uma guerreira até ao mito e a loucura</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="/public/images/redDead-home.jpg" class="d-block w-100" alt="Red Dead Redemption 2">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Red Dead Redemption 2</h5>
+						<p>Estados Unidos, 1899. O fim da era do velho oeste</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="/public/images/cod-home.jpg" class="d-block w-100" alt="Call of Duty: WWII">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Call of Duty: WWII</h5>
+						<p>Desembarque em Normandia, Dia D e envolva-se na a maior guerra da história do planeta</p>
+					</div>
+				</div>
+				<div class="carousel-item">
+					<img src="/public/images/forza-home.jpg" class="d-block w-100" alt="Forza Horizon 5">
+					<div class="carousel-caption d-none d-md-block">
+						<h5>Forza Horizon 5</h5>
+						<p>Explore as paisagens do mundo aberto vibrante e em constante evolução do México</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying"
+			data-bs-slide="prev">
+			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Previous</span>
+		</button>
+		<button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying"
+			data-bs-slide="next">
+			<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			<span class="visually-hidden">Next</span>
+		</button>
+		</div>
+	</section>
+
+	<section id="plataformas">
+		<h3>Plataformas</h3>
+		<div class="plataformas">
+			<ul>
+				<li id="xbox">
+					<img id="ximg" src="/public/images/xbox.png" alt="Xbox">
+					<p>Xbox</p>
+				</li>
+				<li id="play">
+					<img id="pimg" src="/public/images/play.png" alt="PlayStation">
+					<p>PlayStation</p>
+				</li>
+				<li id="wind">
+					<img id="wimg" src="/public/images/windows.png" alt="Windows">
+					<p>Windows</p>
+				</li>
+				<li id="switch">
+					<img src="/public/images/switch.png" alt="Switch">
+					<p>Switch</p>
+				</li>
+			</ul>
+		</div>
+	</section>
+
+	<section id="jogos">
+		<div class="games">
+			#{list items:lista, as:'g'}
+			<div class="game">
+				<div class="imgGame">
+					#{if g?.nomeFoto}
+					<img src="../uploads/${g.id}/${g.nomeFoto}" alt="${g.nomeFoto}">
+					#{/if} #{else}
+					<p id="imgGameErro">Que azar! A imagem foi passear, mas volta logo... (＾_＾）</p>
+					#{/else}
+				</div>
+
+				<div class="infoGame">
+					<div class="infoGame-info">
+						<a href="@{Games.detalhar(g.id)}">
+							<h3>${g.nome}</h3>
+						</a>
+
+						<h6>${g.desenvolvedor}</h6>
+						<p>${g.genero}</p>
+						<div id="plataformaGame">
+							<button type="button">${g.plataforma}</button>
+						</div>
+						<p id="descGame">${g.descricao}</p>
+
+						#{if session['perfil'] == 'admin'}
+						<div id="acoesGame">
+							<a id="editarGame" href='@{Games.editar(g.id)}'>Editar</a>
+							<a id="deletarGame" href='@{Games.deletar(g.id)}'>Deletar</a>
+						</div>
+						#{/if}
+					</div>
+
+					<div class="mediaJogo">
+						<p id="mediaJogo">${controllers.Games.notaMedia(g.id)}</p>
+					</div>
+
+				</div>
+			</div>
+			#{/list}
+		</div>
+
+		<div class="newsGames">
+			<div id="borderNew">
+				<div class="imgNews">
+					<img src="/public/images/steam.jpg" alt="Starfield">
+				</div>
+
+				<div class="infoNews">
+					<a href="https://www.theenemy.com.br/pc/steam-jogos-2023-milhares" target="_blank">
+						<h5>Mais de 14 mil jogos foram lançados no Steam em 2023</h5>
+					</a>
+
+					<p>Conforme publicado pelo GameSpot, o SteamDB, um site independente dedicado à análise de
+						atividades no Steam, afirma que 14.535 jogos individuais foram...</p>
+				</div>
+			</div>
+
+			<div id="borderNew">
+				<div class="imgNews">
+					<img src="/public/images/ps5.jpg" alt="Xbox gamepass">
+				</div>
+
+				<div class="infoNews">
+					<a href="https://www.gamevicio.com/noticias/2024/01/ps5-pro-deve-ser-anunciado-entre-julho-e-setembro-afirma-tom-henderson/"
+						target="_blank">
+						<h5>PS5 Pro deve ser anunciado entre Julho e Setembro, afirma Tom Henderson</h5>
+					</a>
+
+					<p>A possibilidade de uma versão aprimorada do PlayStation 5 parece cada vez mais real, com diversos
+						rumores e supostos vazamentos surgindo nos...</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="divi"></section>
+</form>

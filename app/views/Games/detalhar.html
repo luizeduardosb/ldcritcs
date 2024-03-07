@@ -1,0 +1,67 @@
+#{extends 'main.html' /}
+#{set title:'Detalhar game'/}
+
+<form id="form-detalhar" action="@{Games.detalhar}">
+
+	<div class="game-detalhar">
+		<div class="game-corpo">
+			#{if session['perfil'] == 'admin'}
+			<p>Identificação do game: #${game.id}</p>
+			#{/if}
+
+			<div class="game-corpo-flex">
+				<div class="nome-detalhar">
+					<h1>${game.nome}</h1>
+				</div>
+				<div class="mediaJogo detalhar">
+					<p id="mediaJogo-detalhar">${controllers.Games.notaMedia(game.id)}</p>
+				</div>
+			</div>
+
+			<p><b>Gênero:</b> ${game.genero}</p>
+			<p><b>Desenvolvedor(a):</b> ${game.desenvolvedor}</p>
+			<p><b>Plataformas:</b> ${game.plataforma}</p>
+			<p><b>Lançamento:</b> ${game.lancamento.format('dd/MM/yyyy')}</p>
+			<p id="descGame-detalhar">${game.descricao}</p>
+		</div>
+		<div class="game-det-img">
+			#{if game?.nomeFoto}
+			<img src="../uploads/${game.id}/${game.nomeFoto}" alt="${game.nomeFoto}">
+			#{/if}
+			#{else}
+			<p id="imgGameErro">Que azar! A imagem foi passear, mas volta logo... (＾_＾）</p>
+			#{/else}
+		</div>
+	</div>
+
+
+	<h3 class="divisoria-detalhar">Últimas críticas</h3>
+	<div class="criticas-games">
+		#{list items:game.criticas, as:'critica'}
+		<div class="card-critica">
+			#{if session['perfil'] == 'admin'}
+			<p>Identificação da critica: #${critica.id}</p>
+			#{/if}
+
+			<div class="card-critica-flex">
+				<p id="notaJogo">${critica.nota}</p>
+				<div class="nome-plat">
+					<h5>${critica.nomeUser}</h5>
+					<button id="plataformaGame-detalhar" type="button">${critica.plataforma}</button>
+				</div>
+				<p>${critica.data.format('dd/MM/yyyy')}</p>
+			</div>
+			<p id="analise-detalhar">${critica.analise}</p>
+			#{if session['perfil'] == 'admin'}
+			<a id="adicionarGame-detalhar" href='@{Games.removerCritica(game.id, critica.id)}'>Deletar</a>
+			#{/if}
+
+		</div>
+		#{/list}
+	</div>
+
+	#{if session['perfil'] == 'admin'}
+	<a id="adicionarGame-detalhar" href="/games/form">Adicionar game</a>
+	#{/if}
+	<a id="paginaInicial-detalhar" href="@{games.home}">Página inicial</a>
+</form>

@@ -1,0 +1,45 @@
+#{extends 'main.html' /}
+#{set title:'Avaliações dos games' /}
+
+<form action="@{Criticas.listar}">
+	<div class="corpo">
+		<div class="filtro">
+
+			<div id="check" class="form-check">
+				<div class="check">
+					<input class="form-check-input" type="checkbox" name="busca" value="nao" id="flexCheckChecked">
+					<label class="form-check-label" for="flexCheckChecked">
+						Marque caso não deseja receber spoilers
+					</label>
+				</div>
+				<div class="col-12">
+					<button id="submit" class="btn btn-primary" type="submit">Filtrar</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="criticas">
+			#{list items:lista, as:'c'}
+			<div class="card col-5">
+				<div class="card-body">
+					<button type="button" class="btn btn-primary position-relative col-2">${c.nota}</button>
+					<div class="info col-10">
+						<h5 class="card-title">${c.game?.nome}</h5>
+					</div>
+					<h2 class="plat">${c.nomeUser}</h2>
+					<h6 class="plat">${c.plataforma}</h6>
+					<p class="card-text">${c.analise}</p>
+
+
+					<button type="button" class="btn btn-outline-secondary edit"> 
+						<a href='@{Criticas.editar(c.id)}'>Editar</a>
+						</button>
+					<button type="button" class="btn btn-outline-secondary del"> 
+						<a href='@{Criticas.deletar(c.id)}'>Deletar</a>
+						</button>
+				</div>
+			</div>
+			#{/list}
+		</div>
+	</div>
+</form>
