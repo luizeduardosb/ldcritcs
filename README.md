@@ -1,5 +1,8 @@
 # LDCritcs - Site de Críticas de Jogos de Videogame
 
+*Este é um repositório secundário, apenas de demonstração. O repositório original, com todos os commits e movimentações do projeto, segue privado. 
+*Para utilizar o projeto será necessário ter o Play Framework instalado em sua máquina.
+
 O LDCritcs é um projeto pessoal de aplicação web dedicada à análise e críticas de jogos de videogame. 
 Este repositório contém o código-fonte completo do projeto.
 
@@ -7,7 +10,6 @@ Acesse meu linkedin para mais informações: https://www.linkedin.com/in/luiz-be
 
 ##Tecnologias utiizadas:
 Java | Play Framework | JavaScript | ViaCEP API | HTML5 | CSS3 | Bootstrap | Figma 
-
 
 
 ## Funcionalidades Principais
@@ -45,15 +47,11 @@ Este controller cuida das questões de segurança da aplicação. Suas principai
 
 ### `controllers.Usuarios`
 Este controller é responsável por lidar com operações relacionadas aos usuários do sistema. Suas principais funcionalidades incluem:
-- **Registro de Usuário (`register`)**: Exibe o formulário de registro de usuário.
-- **Login de Usuário (`login`)**: Exibe o formulário de login de usuário.
-- **Salvar Usuário (`salvar`)**: Salva um novo usuário no banco de dados. Antes de salvar, realiza algumas validações, como garantir que o perfil padrão seja "comum" e que o nome de usuário contenha um "@".
-- **Deletar Usuário (`deletar`)**: Remove um usuário existente do banco de dados com base em seu ID.
-- **Editar Usuário (`editar`)**: Exibe o formulário de edição de um usuário existente, pré-preenchido com suas informações atuais.
-- **Entrar (`entrar`)**: Autentica um usuário com base no nome de usuário e senha fornecidos. Se as credenciais estiverem corretas, o usuário é redirecionado para a página inicial do sistema. Caso contrário, uma mensagem de erro é exibida.
-- **Validação de Usuário (`validacaoUser`)**: Exibe uma mensagem de erro quando as credenciais de login são inválidas.
-- **Erros de Validação (`errosValidacao`)**: Exibe uma mensagem de erro quando ocorre um erro de validação durante o registro de um novo usuário.
-- **Sair (`sair`)**: Limpa a sessão do usuário e redireciona para a página inicial do sistema.
+- Controle de todos os usuários, como deletar, salvar e editar.
+- Validações de registro, como garantir que o perfil padrão seja "comum" e que o nome de usuário contenha um "@".
+- O login autentica um usuário com base no nome de usuário e senha fornecidos. Se as credenciais estiverem corretas, o usuário é redirecionado para a página inicial do sistema. Caso contrário, uma mensagem de erro é exibida.
+- A validação de login exibe uma mensagem de erro quando as credenciais de login são inválidas.
+- Ao clicar em sair, o sistema limpa a sessão do usuário e redireciona para a página inicial.
 
 Este controller é essencial para a funcionalidade básica do sistema, permitindo que os usuários se registrem, façam login, editem suas informações e saiam do sistema de forma segura.
 
