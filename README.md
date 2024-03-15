@@ -1,6 +1,7 @@
 # LDCritcs - Site de Críticas de Jogos de Videogame
 
-*Este é um repositório secundário, apenas de demonstração. O repositório original, com todos os commits e movimentações do projeto, segue privado. 
+*Este é um repositório secundário, apenas de demonstração. O repositório original, com todos os commits e movimentações do projeto, segue privado.
+
 *Para utilizar o projeto será necessário ter o Play Framework instalado em sua máquina.
 
 O LDCritcs é um projeto pessoal de aplicação web dedicada à análise e críticas de jogos de videogame. 
@@ -32,7 +33,7 @@ Este controller lida com operações relacionadas às críticas dos jogos. Suas 
 - Editar críticas existentes.
 
 ### `controllers.Games`
-O controller `Games` gerencia operações relacionadas aos jogos. Suas funcionalidades incluem:
+O controller Games gerencia operações relacionadas aos jogos. Suas funcionalidades incluem:
 - Exibir a página inicial com a lista de jogos e críticas associadas.
 - Permitir a adição, edição e exclusão de jogos.
 - Exibir detalhes de um jogo específico, incluindo todas as críticas associadas.
@@ -52,6 +53,3 @@ Este controller é responsável por lidar com operações relacionadas aos usuá
 - O login autentica um usuário com base no nome de usuário e senha fornecidos. Se as credenciais estiverem corretas, o usuário é redirecionado para a página inicial do sistema. Caso contrário, uma mensagem de erro é exibida.
 - A validação de login exibe uma mensagem de erro quando as credenciais de login são inválidas.
 - Ao clicar em sair, o sistema limpa a sessão do usuário e redireciona para a página inicial.
-
-Este controller é essencial para a funcionalidade básica do sistema, permitindo que os usuários se registrem, façam login, editem suas informações e saiam do sistema de forma segura.
-
